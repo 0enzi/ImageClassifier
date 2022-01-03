@@ -76,7 +76,7 @@ class Classify(Resource):
             {"$set": {
                 "Credits":credits-1
             }})
-        return ret
+        return jsonify(ret)
         
 
 app.run(host='0.0.0.0', port="3000")
