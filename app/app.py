@@ -20,10 +20,11 @@ class Classify(Resource):
             f.write(r.content)
             proc = subprocess.Popen('python classify_image.py --model_dir=. --image_file=./temp.jpg', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
             ret = proc.communicate()[0]
+            print(ret)
             proc.wait()
             with open("text.txt") as f:
                 retJson = json.load(f)
-                
+
         return retJson
         
 api.add_resource(Classify, "/classify")

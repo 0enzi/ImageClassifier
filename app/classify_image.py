@@ -39,9 +39,11 @@ import tarfile
 import numpy as np
 from six.moves import urllib
 import tensorflow as tf
+
 import json
 
 FLAGS = None
+print("We GOT IN")
 
 # pylint: disable=line-too-long
 DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
@@ -160,6 +162,7 @@ def run_inference_on_image(image):
       retJson[human_string]=score.item()
       print('%s (score = %.5f)' % (human_string, score))
     print(retJson)
+
     with open("text.txt", 'w') as f:
         json.dump(retJson, f)
 

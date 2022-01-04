@@ -1,0 +1,1 @@
+{"great grey owl, great gray owl, Strix nebulosa": 0.4065973460674286, "kite": 0.16331985592842102, "prairie chicken, prairie grouse, prairie fowl": 0.07569892704486847, "ruffed grouse, partridge, Bonasa umbellus": 0.009089265018701553, "hen": 0.0070185912773013115}
