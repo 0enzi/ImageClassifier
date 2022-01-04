@@ -1,0 +1,7 @@
+{
+    "pred_1": "label : zebra and confidence : 99.95840454101562",
+    "pred_2": "label : gazelle and confidence : 0.013200913555920124",
+    "pred_3": "label : tiger, Panthera tigris and confidence : 0.002469193423166871",
+    "pred_4": "label : tiger cat and confidence : 0.0015760936075821519",
+    "pred_5": "label : cheetah, chetah, Acinonyx jubatus and confidence : 0.0012837880058214068"
+}

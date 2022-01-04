@@ -39,6 +39,7 @@ import tarfile
 import numpy as np
 from six.moves import urllib
 import tensorflow as tf
+import json
 
 FLAGS = None
 
@@ -152,14 +153,15 @@ def run_inference_on_image(image):
     node_lookup = NodeLookup()
 
     top_k = predictions.argsort()[-FLAGS.num_top_predictions:][::-1]
-    ret= {}
+    retJson = {}
     for node_id in top_k:
       human_string = node_lookup.id_to_string(node_id)
       score = predictions[node_id]
-      ret[human_string]=score
+      retJson[human_string]=score.item()
       print('%s (score = %.5f)' % (human_string, score))
-    with open("text.txt") as f:
-        json.dump(ret, f)
+    print(retJson)
+    with open("text.txt", 'w') as f:
+        json.dump(retJson, f)
 
 
 def maybe_download_and_extract():
@@ -219,4 +221,4 @@ if __name__ == '__main__':
       help='Display this many predictions.'
   )
   FLAGS, unparsed = parser.parse_known_args()
-  tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

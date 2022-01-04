@@ -30,7 +30,7 @@ def predict(model, img):
 
     out = model(batch_t)
 
-    with open('imagenet_classes.txt') as f:
+    with open('imgnet_classes.txt') as f:
         labels = [line.strip() for line in f.readlines()]
 
     retJson = {}

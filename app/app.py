@@ -15,18 +15,16 @@ class Classify(Resource):
         posted_data = request.get_json()
         url = posted_data["url"]
         r = requests.get(url)
-        ret = {}
-
-        with open("temp.jpg", "wb") as f:
+        retJson = {}
+        with open('temp.jpg', 'wb') as f:
             f.write(r.content)
-            proc = subprocess.Popen(['python3','classify.py','--image','temp.jpg'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+            proc = subprocess.Popen('python classify_image.py --model_dir=. --image_file=./temp.jpg', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
             ret = proc.communicate()[0]
             proc.wait()
-            with open("text.json") as g:
-                ret = json.load(g)
-        
-       
-        return ret
+            with open("text.txt") as f:
+                retJson = json.load(f)
+                
+        return retJson
         
 api.add_resource(Classify, "/classify")
 
